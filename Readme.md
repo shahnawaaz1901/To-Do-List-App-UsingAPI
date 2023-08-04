@@ -11,7 +11,7 @@ A ToDo List App
 
 -Data
             -Tasks (An Array of Objects)
-            -Task Item (Objects of {done, text, id})
+            -Task Item (Objects of {completed, title, id})
 
 -Functions (in JS)
             -addToDo()
@@ -19,3 +19,4 @@ A ToDo List App
             -showNotification()
             -renderList()
             -checkTask()
+-Fetch To-Do Data From -(https://jsonplaceholder.typicode.com/todos)
