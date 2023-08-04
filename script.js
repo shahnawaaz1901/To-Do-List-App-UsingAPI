@@ -116,22 +116,32 @@ function handleInputClicks(e) {
         return;
     }
 }
-function fetchTodoS() {
-    //For getRequest You Need to Pass URL
-    var promise = fetch('https://jsonplaceholder.typicode.com/todos')                        //fetch function return a promise  
-
-    var responseData = promise.then((response) => {
-        return response.json();                                                             // response.json also returns promise
-    })
-
-    responseData.then((data) => {                                                           // call then function for fulfiled promise
-        tasks = data.slice(0, 10);
+async function fetchTodoS() {
+    // Every Time You Use aync await Keyword Always Use try and catch to prevent Code Break
+    try{
+        let response = await fetch('https://jsonplaceholder.typicode.com/todos');           // For Using Await Function Should be Async
+        let data = await response.json();
+        tasks = data;
         renderList();
-    })
+    }catch(error){
+        console.log('error',error);
+    }
+    
+    //For getRequest You Need to Pass URL
+    // var promise = fetch('https://jsonplaceholder.typicode.com/todos')                        //fetch function return a promise  
 
-    responseData.catch((error)=>{
-        console.log('error',error);                                                         // call catch function for edge case if something went wrong
-    })
+    // var responseData = promise.then((response) => {
+    //     return response.json();                                                             // response.json also returns promise
+    // })
+
+    // responseData.then((data) => {                                                           // call then function for fulfiled promise
+    //     tasks = data.slice(0, 10);
+    //     renderList();
+    // })
+
+    // responseData.catch((error)=>{
+    //     console.log('error',error);                                                         // call catch function for edge case if something went wrong
+    // })
     /*
         Instead of Using This Above is Used
     fetch('https://jsonplaceholder.typicode.com/todos')
