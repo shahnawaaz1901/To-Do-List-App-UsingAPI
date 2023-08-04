@@ -16,10 +16,31 @@ console.log(add);
 
 // Adding a Taks
 function addTask(task) {
+    // Now Post Data TO the Server Using API
     if (!task) {
         showNotification('Task Can Not Added');
         return;
     }
+    //First Fetch Data From server With API
+    /*
+    // All Code is Comment Out Because API we Use that Server Not Support any Post Request
+    fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        tasks.push(task);
+        showNotification('Task Added Successfully');
+        renderList();
+    }).catch((error)=>{
+        console.log('error', error);
+    })
+    */
+    addTask(task);
     tasks.push(task);
     showNotification('Task Added Successfully');
     renderList();
@@ -118,15 +139,15 @@ function handleInputClicks(e) {
 }
 async function fetchTodoS() {
     // Every Time You Use aync await Keyword Always Use try and catch to prevent Code Break
-    try{
+    try {
         let response = await fetch('https://jsonplaceholder.typicode.com/todos');           // For Using Await Function Should be Async
         let data = await response.json();
         tasks = data;
         renderList();
-    }catch(error){
-        console.log('error',error);
+    } catch (error) {
+        console.log('error', error);
     }
-    
+
     //For getRequest You Need to Pass URL
     // var promise = fetch('https://jsonplaceholder.typicode.com/todos')                        //fetch function return a promise  
 
